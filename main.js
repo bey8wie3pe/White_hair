@@ -1,9 +1,15 @@
-var app = new Vue({
-    el: '#app',
-    data: {
-        n: 0
-    },
+let n = 0
 
-    methods: {
+function btnclick(){
+    n = n + 1
+}
+function btn_click(){
+    n = n - 1
+}
+function cheak(){
+    if (n < 0){
+        n = 0;
     }
-})
+    let testinfo = document.getElementById("test");
+    testinfo.innerHTML = n;
+}})
