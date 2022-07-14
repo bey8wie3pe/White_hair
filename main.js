@@ -1,15 +1,15 @@
-let n = 0
-
-function btnclick(){
-    n = n + 1
-}
-function btn_click(){
-    n = n - 1
-}
-function cheak(){
-    if (n < 0){
-        n = 0;
+new Vue({
+  el: '#app',
+  data: {
+    message: '',
+    count: 0
+  },
+  methods: {
+    plus() {
+      this.message = `髪を${++this.count}本抜きました。`;
+    },
+    minus(){
+      this.message = `髪を${--this.count}本抜きました。`
     }
-    let testinfo = document.getElementById("test");
-    testinfo.innerHTML = n;
-}
+  }
+});
