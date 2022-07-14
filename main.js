@@ -12,4 +12,4 @@ function cheak(){
     }
     let testinfo = document.getElementById("test");
     testinfo.innerHTML = n;
-}})
+}
