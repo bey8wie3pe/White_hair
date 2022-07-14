@@ -10,11 +10,10 @@
   <section class="section">
     <div class="container">
       <div id="app"> 
-        <div class=" button is-primary is-size-1" v-on:click=" n++ ">プラス</div>
-        <div class="button is-primary is-size-1" v-on:click="n--">マイナス</div>
-        <p class="is-primary is-size-1">{{ n }}本目</p>
+        <div class=" button is-primary is-size-1" onclick="btnclick();cheak()">プラス</div>
+        <div  class="button is-primary is-size-1" onclick="btn_click();cheak()">マイナス</div>
+        <p id="test" class="is-primary is-size-1" onclick="cheak()"></p><p class="is-primary is-size-1">本目</p>
           </div>
-          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src="main.js"></script>
     </div>
   </section>
