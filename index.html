@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>髪の毛カウンター</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
   <body>
   <section class="section">
     <div class="container">
       <div id="app"> 
-        <button class=" button is-primary is-size-1" onclick="btnclick();cheak()">プラス</button>
-        <button  class="button is-primary is-size-1" onclick="btn_click();cheak()">マイナス</button>
-        <p id="test" class="is-primary is-size-1" onclick="cheak()"></p><p class="is-primary is-size-1">本目</p>
-          </div>
+          <button class="button is-primary is-size-1" v-on:click='plus'>プラス</button>
+          <button class="button is-primary is-size-1" v-on:click="minus">マイナス</button>
+          <div class="is-primary is-size-1">{{ message }}</div>
+        </div>
           <script src="main.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     </div>
   </section>
   </body>
