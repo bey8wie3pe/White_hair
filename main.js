@@ -11,5 +11,5 @@ function cheak(){
         n = 0;
     }
     let testinfo = document.getElementById("test");
-    testinfo.innerHTML = n;
+    testinfo.innerHTML = `${n}本目`;
 }
