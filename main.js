@@ -20,10 +20,10 @@ function btn_click(){
 }
 //終了ボタンを押したらcookieを埋め込む
 function finish(){
-    document.cookie = 'tanaka='+n ;'expires=Tue, 19 Jan 2038 03:14:07 GMT'
+    document.cookie = 'siraga='+n ;'expires=Tue, 19 Jan 2038 03:14:07 GMT'
 }
 function cookie(){
-    let a = document.tanaka
+    let a = document.siraga
 }
 //全てのcookieを取り出す
 let cookies = document.cookie; 
@@ -34,11 +34,9 @@ for(let c of cookiesArray){
     //さらに=で分割して配列に
     let cArray = c.split('='); 
      // 取り出したいkeyと合致したら以下のものを実行する
-    if( cArray[0] == 'tanaka'){
+    if( cArray[0] == 'siraga'){
         let hair = document.getElementById("hair");
         hair.innerHTML = `前回は${cArray}本抜きました。`;
     }
 }
-
-
 
