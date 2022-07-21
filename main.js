@@ -3,15 +3,18 @@ let n = 0
 //プラスを押した場合
 function btnclick(){
     n = n + 1;
-    if (n < 0){
-        n = 0;
-    }
     let testinfo = document.getElementById("test");
     testinfo.innerHTML = `${n}本目`;
     let salary = document.getElementById("salary");
     let salary_read = salary.value;
-    let money = document.getElementById("money");
-    money.innerHTML = `${n*salary_read}円`;
+    let confirmation = Math.sign(salary_read);
+    if(confirmation == -1){
+        let change = document.getElementById("money");
+        change.innerHTML = `正の数にしてください`;
+    } else {
+        let money = document.getElementById("money");
+        money.innerHTML = `${n*salary_read}円`;
+    }
 }
 //マイナスを押した場合
 function btn_click(){
@@ -23,8 +26,14 @@ function btn_click(){
     testinfo.innerHTML = `${n}本目`;
     let salary = document.getElementById("salary");
     let salary_read = salary.value;
-    let money = document.getElementById("money");
-    money.innerHTML = `${n*salary_read}円`;
+    let confirmation = Math.sign(salary_read);
+    if(confirmation == -1){
+        let change = document.getElementById("money");
+        change.innerHTML = `正の数にしてください`;
+    } else {
+        let money = document.getElementById("money");
+        money.innerHTML = `${n*salary_read}円`;
+    }
 }
 //終了ボタンを押したらcookieを埋め込む
 function finish(){
@@ -45,6 +54,3 @@ for(let c of cookiesArray){
         hair.innerHTML = `前回は${cArray}本抜きました。`;
     }
 }
-
-
-
