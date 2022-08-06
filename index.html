@@ -12,13 +12,17 @@
         <button class=" button is-primary is-size-1" onclick="btnclick()">プラス</button>
         <button class="button is-primary is-size-1" onclick="btn_click()">マイナス</button>
         <p id="test" class="is-primary is-size-1">0本目</p>
-        <button class="button is-primary is-size-3" onclick="finish()">終了</button>
+        <input id="unit_price" class="is-size-3" placeholder="1本あたりの単価を入力" type="number">
         <p id="hair" class=" is-primary is-size-3"></p>
+        <p id="last_time" class="is-primary is-size-3"></p>
         <style>input {
           margin: 1em 0px;
         }</style>
-        <input id="salary" class="is-size-3" placeholder="1本あたりの単価を入力" type="number">
         <p id="money" class="is-primary is-size-2" >0円</p>
+        <style>input {
+          margin: 1em 0px;
+        }</style>
+        <p class="button is-primary is-size-3" onclick="finish()">終了</p>
     </div>
   </section>
   <script src="main.js"></script>
