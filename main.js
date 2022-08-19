@@ -1,45 +1,59 @@
-//nは髪の本数
-let n = 0
+//髪の本数
+let n = 0;
+let total = 0;
 //プラスを押した場合
 function btnclick(){
-    n = n + 1;
+    n++;
+    //現在の本数を表示
     let testinfo = document.getElementById("test");
     testinfo.innerHTML = `${n}本目`;
-    let salary = document.getElementById("salary");
-    let salary_read = salary.value;
-    let confirmation = Math.sign(salary_read);
+    //単価を取得
+    let unit_price = document.getElementById("unit_price");
+    //今の単価
+    let unit_read = unit_price.value;
+    let confirmation = Math.sign(unit_read);
+    //単価が負の数なら
     if(confirmation == -1){
         let change = document.getElementById("money");
         change.innerHTML = `正の数にしてください`;
-    } else {
+    //正の数なら値段を表示
+    }else {
         let money = document.getElementById("money");
-        money.innerHTML = `${n*salary_read}円`;
+        money.innerHTML = `${n*unit_read}円`;
     }
+    total = n*unit_read;
 }
 //マイナスを押した場合
 function btn_click(){
-    n = n - 1;
+    n--;
     if (n < 0){
         n = 0;
     }
+    //現在の本数を表示
     let testinfo = document.getElementById("test");
     testinfo.innerHTML = `${n}本目`;
-    let salary = document.getElementById("salary");
-    let salary_read = salary.value;
-    let confirmation = Math.sign(salary_read);
+    //単価を取得
+    let unit_price = document.getElementById("unit_price");
+    let unit_read = unit_price.value;
+    let confirmation = Math.sign(unit_read);
+    //単価が負の数なら
     if(confirmation == -1){
         let change = document.getElementById("money");
         change.innerHTML = `正の数にしてください`;
-    } else {
+    //正の数なら値段を表示
+    }else {
         let money = document.getElementById("money");
-        money.innerHTML = `${n*salary_read}円`;
+        money.innerHTML = `${n*unit_read}円`;
     }
+    total = n*unit_read;    
 }
+
 //終了ボタンを押したらcookieを埋め込む
 function finish(){
     document.cookie = 'siraga='+n ;'expires=Tue, 19 Jan 2038 03:14:07 GMT'
-
+    document.cookie = 'total='+total ; 'expires=Tue, 19 Jan 2038 03:14:07 GMT'
 }
+
 //全てのcookieを取り出す
 let cookies = document.cookie; 
 // ;で分割し配列に
@@ -48,9 +62,19 @@ let cookiesArray = cookies.split(';');
 for(let c of cookiesArray){ 
     //さらに=で分割して配列に
     let cArray = c.split('='); 
-     // 取り出したいkeyと合致したら以下のものを実行する
-     if( cArray[0] == 'siraga'){
-        let hair = document.getElementById("hair");
-        hair.innerHTML = `前回は${cArray}本抜きました。`;
-    }
+    //置き換える
+    let hair = document.getElementById('hair');
+    hair.innerHTML = `前回は${cArray[1]}本抜きました。`;
+}
+//全てのcookieを取り出す
+let cookie = document.cookie; 
+// ;で分割し配列に
+let cookiesarray = cookie.split(';');
+//一つ一つ取り出す
+for(let d of cookiesarray){ 
+    //さらに=で分割して配列に
+    let carray = d.split('='); 
+    // 取り出したいkeyと合致したら以下のものを実行する
+    let total = document.getElementById('total');
+    total.innerHTML = `前回は${carray[1]}円でした。`;
 }
