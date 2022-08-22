@@ -1,5 +1,6 @@
 //髪の本数
 let n = 0;
+//前回の合計
 let total = 0;
 //プラスを押した場合
 function btnclick(){
@@ -62,9 +63,11 @@ let cookiesArray = cookies.split(';');
 for(let c of cookiesArray){ 
     //さらに=で分割して配列に
     let cArray = c.split('='); 
-    //置き換える
+    // 取り出したいkeyと合致したら以下のものを実行する
+    if( cArray[0] == 'siraga'){
     let hair = document.getElementById('hair');
     hair.innerHTML = `前回は${cArray[1]}本抜きました。`;
+}
 }
 //全てのcookieを取り出す
 let cookie = document.cookie; 
