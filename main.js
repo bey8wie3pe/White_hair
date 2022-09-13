@@ -8,21 +8,7 @@ function btnclick(){
     //現在の本数を表示
     let testinfo = document.getElementById("test");
     testinfo.innerHTML = `${n}本目`;
-    //単価を取得
-    let unit_price = document.getElementById("unit_price");
-    //今の単価
-    let unit_read = unit_price.value;
-    let confirmation = Math.sign(unit_read);
-    //単価が負の数なら
-    if(confirmation == -1){
-        let change = document.getElementById("money");
-        change.innerHTML = `正の数にしてください`;
-    //正の数なら値段を表示
-    }else {
-        let money = document.getElementById("money");
-        money.innerHTML = `${n*unit_read}円`;
-    }
-    total = n*unit_read;
+    cheak();
 }
 //マイナスを押した場合
 function btn_click(){
@@ -31,30 +17,34 @@ function btn_click(){
         n = 0;
     }
     //現在の本数を表示
-    let testinfo = document.getElementById("test");
-    testinfo.innerHTML = `${n}本目`;
+    let number = document.getElementById("test");
+    number.innerHTML = `${n}本目`;
+    cheak();
+}
+//単価が負の数か判定する
+function cheak(){
     //単価を取得
     let unit_price = document.getElementById("unit_price");
     let unit_read = unit_price.value;
     let confirmation = Math.sign(unit_read);
     //単価が負の数なら
     if(confirmation == -1){
-        let change = document.getElementById("money");
-        change.innerHTML = `正の数にしてください`;
+        let error = document.getElementById("money");
+        error.innerHTML = `正の数にしてください`;
     //正の数なら値段を表示
-    }else {
+    } else {
         let money = document.getElementById("money");
         money.innerHTML = `${n*unit_read}円`;
     }
-    total = n*unit_read;    
+    total = n*unit_read;  
 }
-
 //終了ボタンを押したらcookieを埋め込む
 function finish(){
-    document.cookie = 'siraga='+n ;'expires=Tue, 19 Jan 2038 03:14:07 GMT'
-    document.cookie = 'total='+total ; 'expires=Tue, 19 Jan 2038 03:14:07 GMT'
+    document.cookie = `siraga=${n} ; max-age=2592000`;
+    document.cookie = `total=${total} ; max-age=2592000`;
 }
-
+let a = 1;
+console.log(`${a}`);
 //全てのcookieを取り出す
 let cookies = document.cookie; 
 // ;で分割し配列に
