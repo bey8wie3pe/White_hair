@@ -40,6 +40,7 @@ function cheak(){
 }
 //終了ボタンを押したらcookieを埋め込む
 function finish(){
+    //30日間保存する        
     document.cookie = `siraga=${n} ; max-age=2592000`;
     document.cookie = `total=${total} ; max-age=2592000`;
 }
