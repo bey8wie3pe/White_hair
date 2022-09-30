@@ -44,8 +44,7 @@ function finish(){
     document.cookie = `siraga=${n} ; max-age=2592000`;
     document.cookie = `total=${total} ; max-age=2592000`;
 }
-let a = 1;
-console.log(`${a}`);
+
 //全てのcookieを取り出す
 let cookies = document.cookie; 
 // ;で分割し配列に
