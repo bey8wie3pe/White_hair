@@ -1,6 +1,6 @@
 //髪の本数
 let n = 0;
-//前回の合計
+//合計
 let total = 0;
 //プラスを押した場合
 function btnclick(){
@@ -26,9 +26,8 @@ function cheak(){
     //単価を取得
     let unit_price = document.getElementById("unit_price");
     let unit_read = unit_price.value;
-    let confirmation = Math.sign(unit_read);
     //単価が負の数なら
-    if(confirmation == -1){
+    if(unit_read <= 0){
         let error = document.getElementById("money");
         error.innerHTML = `正の数にしてください`;
     //正の数なら値段を表示
@@ -40,34 +39,27 @@ function cheak(){
 }
 //終了ボタンを押したらcookieを埋め込む
 function finish(){
+    let time = new Date().toLocaleString("ja-JP")
     //30日間保存する        
     document.cookie = `siraga=${n} ; max-age=2592000`;
     document.cookie = `total=${total} ; max-age=2592000`;
+    document.cookie = `time=${time} ; max-age=2592000`
 }
+//引数nameを持つCookieを返す。なければundefinedを返す。
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+let a = (getCookie("siraga"));
+let hair = document.getElementById('hair');
+hair.innerHTML = `前回は${a}本抜きました。`;
 
-//全てのcookieを取り出す
-let cookies = document.cookie; 
-// ;で分割し配列に
-let cookiesArray = cookies.split(';');
-//一つ一つ取り出す
-for(let c of cookiesArray){ 
-    //さらに=で分割して配列に
-    let cArray = c.split('='); 
-    // 取り出したいkeyと合致したら以下のものを実行する
-    if( cArray[0] == 'siraga'){
-    let hair = document.getElementById('hair');
-    hair.innerHTML = `前回は${cArray[1]}本抜きました。`;
-}
-}
-//全てのcookieを取り出す
-let cookie = document.cookie; 
-// ;で分割し配列に
-let cookiesarray = cookie.split(';');
-//一つ一つ取り出す
-for(let d of cookiesarray){ 
-    //さらに=で分割して配列に
-    let carray = d.split('='); 
-    // 取り出したいkeyと合致したら以下のものを実行する
-    let total = document.getElementById('total');
-    total.innerHTML = `前回は${carray[1]}円でした。`;
-}
+let b = (getCookie("total"));
+let last_time = document.getElementById('total');
+last_time.innerHTML = `前回は${b}円でした。`;
+
+let c = (getCookie("time"));
+let time = document.getElementById('time');
+time.innerHTML = `前回は${c}にしました。`;
