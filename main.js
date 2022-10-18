@@ -1,42 +1,25 @@
-//髪の本数
 let n = 0;
-//合計
 let total = 0;
-//プラスを押した場合
-function btnclick(){
+$("#plus").click(function(){
     n++;
-    //現在の本数を表示
-    let testinfo = document.getElementById("test");
-    testinfo.innerHTML = `${n}本目`;
-    cheak();
-}
-//マイナスを押した場合
-function btn_click(){
+    let unit_price = $("#unit_price").val();
+    $("#test").html(`${n}本目`);
+    $("#money").html(`${n*unit_price}円`);
+    total = n*unit_price; 
+    console.log(total);
+    
+})
+$("#minus").click(function(){
     n--;
-    if (n < 0){
+    if(n < 0){
         n = 0;
     }
-    //現在の本数を表示
-    let number = document.getElementById("test");
-    number.innerHTML = `${n}本目`;
-    cheak();
-}
-//単価が負の数か判定する
-function cheak(){
-    //単価を取得
-    let unit_price = document.getElementById("unit_price");
-    let unit_read = unit_price.value;
-    //単価が負の数なら
-    if(unit_read <= 0){
-        let error = document.getElementById("money");
-        error.innerHTML = `正の数にしてください`;
-    //正の数なら値段を表示
-    } else {
-        let money = document.getElementById("money");
-        money.innerHTML = `${n*unit_read}円`;
-    }
-    total = n*unit_read;  
-}
+    let unit_price = $("#unit_price").val();
+    $("#test").html(`${n}本目`);
+    $("#money").html(`${n*unit_price}円`);
+    total = n*unit_price;  
+    console.log(total);
+})
 //終了ボタンを押したらcookieを埋め込む
 function finish(){
     let time = new Date().toLocaleString("ja-JP")
@@ -50,7 +33,7 @@ function getCookie(name) {
     let matches = document.cookie.match(new RegExp(
       "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+    return decodeURIComponent(matches[1]);
   }
 let a = (getCookie("siraga"));
 let hair = document.getElementById('hair');
